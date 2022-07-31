@@ -18,11 +18,18 @@ Route::get('/testcors', function(Request $request){
     return response()->json(['Hello Laravel 7']);
 });
 
+Route::post('login', 'API\LoginController@login');
 // Product Resource
 Route::resource('products','API\ProductController');
 
-Route::middleware('auth:api')->group(function() {
+Route::middleware('auth:api')->get('/user', function(Request $request) {
     
-    // 
+    return $request->user();
     
 });
+
+// Route::middleware('auth:api')->group(function() {
+    
+  
+    
+// });
